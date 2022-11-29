@@ -6,14 +6,16 @@
             width: 100%;
             height: 100vh;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
-            padding: 15px;
+            padding: 20px;
         }
 
         .hashtag-form-section .form-details {
             border: 1px solid lightgray;
-            padding: 30px;
+            background: #e0e0e054;
+            padding: 15px;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
@@ -61,7 +63,7 @@
 
         .hashtag-form-section .tags li.addedTag {
             background: none repeat scroll 0 0 #eaeaea;
-            border-radius: 2px;
+            border-radius: 5px;
             border: 1px solid lightgray;
             color: #000;
             padding: 4px;
@@ -104,6 +106,11 @@
         .hashtag-form-section h1 {
             color: #6b6b6b;
             font-size: 1.5em;
+        }
+        .hashtag-form-section button.btn.btn-secondary.submitForm {
+            width: 100%;
+            max-width: 135px;
+            margin: 0 auto;
         }
     </style>
 @endpush
@@ -164,8 +171,8 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="mt-2 d-flex justify-content-center">
-                                <button type="button" class="btn btn-secondary w-25 submitForm">Submit</button>
+                            <div class="my-2 d-flex justify-content-center">
+                                <button type="button" class="btn btn-secondary submitForm">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -219,7 +226,7 @@
 
 
                         $('<li class="addedTag">#' + $(this).val() +
-                            '<span class="tagRemove" onclick="$(this).parent().remove();">x</span><input type="hidden" value="#' +
+                            '<span class="tagRemove" onclick="$(this).parent().remove();">x</span><input type="hidden" value="' +
                             $(this).val() + '" name="tags[]"></li>').insertBefore('.tags .tagAdd');
                         $(this).val('');
 

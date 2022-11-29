@@ -33,15 +33,36 @@
         }
         .hashtag-view-section .photo-details-view {
             width: 100%;
-            max-width: 100px;
-            max-height: 100px;
+            max-width: 80px;
+            max-height: 80px;
             margin:0 auto;
             border: 1px solid #e8e8e8;
+            position: relative;
         }
         .hashtag-view-section .photo-details-view img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        .hashtag-view-section .download-icon i{
+            font-size: 13px;
+            color: #605e5e;
+            margin-bottom: 6px;
+        }
+        .download-icon {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            border-radius: 50%;
+            background: #e5e5e5;
+            border: 1px solid #787a8d66;
+            width: 100%;
+            max-width: 20px;
+            height: 100%;
+            max-height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .hashtag-view-section .hashtag-details-view {
             margin: 0 auto;
@@ -75,7 +96,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-        }
+        }       
     </style>
 @endpush
 
@@ -86,7 +107,7 @@
                 <div class="add-hastag">
                     <button type="button" class="btn btn-secondary">Add</button>
                 </div>
-                <div class="find-hastag">
+                <div class="find-hastag ms-1 ">
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
                         <input type="text" class="form-control" placeholder="Search">
@@ -105,6 +126,11 @@
                 </div>
                 <div class="photo-details-view">
                     <img src="{{ asset('/img/dummy-img.png') }}" alt="">
+                    <div class="download-icon">
+                        <a href="javascript:;">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="hashtag-details-view">
                     <p class="details-pera mb-0">Lorem ipsum dolor sit </p>
