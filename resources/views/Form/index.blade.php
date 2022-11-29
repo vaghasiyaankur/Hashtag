@@ -8,6 +8,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 15px;
         }
 
         .hashtag-form-section .form-details {
@@ -21,12 +22,15 @@
         .hashtag-form-section .form-title h5 {
             font-size: 21px;
         }
-
-        .form-input-box .fieldlabels {
+        .hashtag-form-section .form-input-box .fieldlabels{
             margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
         }
-
-        .form-input-box input {
+        .hashtag-form-section .form-input-box input{
+            outline: none;
+        }
+        .hashtag-form-section .form-control:focus{
             outline: none;
         }
 
@@ -40,6 +44,7 @@
         .hashtag-form-section .tags {
             background: none repeat scroll 0 0 #fff;
             border: 1px solid #ccc;
+            border-radius: 8px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -60,6 +65,8 @@
             border: 1px solid lightgray;
             color: #000;
             padding: 4px;
+            margin: 4px;
+            overflow: auto;
         }
 
         .hashtag-form-section .tags input,
@@ -113,9 +120,9 @@
             <form action="" class="addForm">
                 <div class="form-input-box">
                     <div class="row">
-                        <div class="col-12">                           
-                            <div class="mb-3">
-                                <label class="fieldlabels">Hashtag<span>*</span></label>
+                        <div class="col-12">
+                            <div class="nb-3">
+                                <label class="fieldlabels">Hashtag :</label>
                                 <ul class="tags">
                                     {{-- <li class="addedTag">Web Deisgn<span onclick="$(this).parent().remove();"
                                             class="tagRemove">x</span><input type="hidden" name="tags[]"
@@ -129,27 +136,27 @@
                                             class="tagRemove">x</span><input type="hidden" name="tags[]" value="SEO">
                                     </li> --}}
                                     <li class="tagAdd taglist">
-                                        <input type="text" id="search-field">
+                                        <input type="text" id="search-field" required>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Title :</label>
+                                <label for="exampleInputEmail1" class="form-label fieldlabels">Title :</label>
                                 <input type="text" class="form-control form_title" id="exampleInputtitle"
                                     aria-describedby="emailHelp">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">description :</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fieldlabels">description :</label>
                                 <textarea class="form-control form_description" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Photo :</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fieldlabels">Photo :</label>
                                 <div class="input-group">
                                     <input type="file" class="form-control form_photo" id="inputGroupFile04"
                                        name="file">
@@ -234,7 +241,7 @@
 
                 if (tag.length === 0) {
                     $('.showMessage').html("The tags field is required.");
-                    $('.showMessage').removeClass('d-none').addClass('alert-danger');
+                    $('.showMessage').removeClass('d-none').removeClass('alert-success').addClass('alert-danger');
                     setTimeout (function(){
                         $('.showMessage').addClass('d-none')
                     },5000);
@@ -259,7 +266,7 @@
                     success: function(response) {
                         $(".addForm").trigger("reset");
                         $('.showMessage').html("Hashtag Inserted Successfully.");
-                        $('.showMessage').removeClass('d-none').addClass('alert-success');
+                        $('.showMessage').removeClass('d-none').removeClass('alert-danger').addClass('alert-success');
 
                         setTimeout (function(){
                             $('.showMessage').addClass('d-none')
