@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('hashtag')->nullable();
             $table->text('description')->nullable();
-            $table->text('Photos')->nullable();
+            $table->text('photos')->nullable();
             $table->timestamps();
         });
     }

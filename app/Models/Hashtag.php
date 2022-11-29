@@ -13,4 +13,9 @@ class Hashtag extends Model
     protected $table = 'hashtags';
 
     protected $guarded = ['id'];
+
+    public function hashTagArray()
+    {
+        return explode(',', $this->first()->hashtag);
+    }
 }

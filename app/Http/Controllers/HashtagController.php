@@ -14,16 +14,41 @@ class HashtagController extends Controller
      */
     public function index(Request $request)
     {
-        $results = Hashtag::orderBy('id')->paginate(10);
+        $URL = $request->root();
+
+        $search = $request->search;
+        $results = Hashtag::orderBy('id')->orWhere('title','LIKE','%'.$search.'%')->orWhere('description','LIKE','%'.$search.'%')->paginate(5);
         $artilces = '';
         if ($request->ajax()) {
-            foreach ($results as $result) {
-                $artilces.='<div class="card mb-2"> <div class="card-body">'.$result->id.' <h5 class="card-title">'.$result->title.'</h5> gfhjfkghfgkhjfglhkjfglhfjlhfjhljghfhfjhklgfjhljgfjhljkfljhkldfjhkdfjhldjhkdfgjhlgfhjkfjhlfgjhfklgjhfkdjhld</div></div>';
-                // $artilces.= view('View.List')->render();
-            }
+                foreach ($results as $result) {
+                    $artilces.='<div class="col-12 hastag-details-box">
+                    <div class="details-date-view mb-3">
+                        <h5>'.$result->created_at->format('d M Y').'</h5>
+                    </div>';
+    
+                    if ($result->title) {
+                        $artilces.='<div class="title-details-view mb-3">
+                            <p class="details-pera">'.$result->title.'</p>
+                        </div>';
+                    }
+                    if ($result->description) {
+                        $artilces.='<div class="descrip-details-view mb-3">
+                            <p class="details-pera">'.$result->description .'</p>
+                        </div>';
+                    }
+                    if ($result->photos) {
+                        $artilces.='<div class="photo-details-view">
+                            <img src="'.$URL.'/storage/Hashtag/'.$result->photos.'" alt="">
+                        </div>';
+                    }
+                        $artilces.='<div class="hashtag-details-view">
+                            <h5 class="hashtag-text">'.$result->hashtag.'</h5>
+                        </div>
+                    </div>';
+                }
             return $artilces;
         }
-        return view('View.index');
+        return view('View.index', compact('results'));
     }
 
     /**
@@ -68,7 +93,7 @@ class HashtagController extends Controller
         $amenity->title = $request->title;
         $amenity->hashtag = $request->tag;
         $amenity->description = $request->description;
-        $amenity->Photos = $filename;
+        $amenity->photos = $filename;
         $amenity->save();
 
         return response()->json(["success" => "Hashtag Inserted Successfully"], 200);

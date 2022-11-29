@@ -19,13 +19,11 @@ Route::get('/', function () {
 
 Route::get('/form', function () {
     return view('Form.index');
-});
+})->name('show.form');
 
-Route::get('/view', function () {
-    return view('View.index');
-});
+Route::get('/view', [HashtagController::class, 'index'])->name('list.hashtag');
 
 Route::post('add-hashtag', [HashtagController::class, 'store'])->name('add.hashtag');
-Route::get('/list-hashtag', [HashtagController::class, 'index'])->name('list.hashtag');
+// Route::get('/list-hashtag', [HashtagController::class, 'index'])->name('list.hashtag');
 
 
