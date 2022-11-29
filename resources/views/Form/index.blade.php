@@ -7,7 +7,7 @@
             height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 15px;
         }
         .hashtag-form-section .form-details {
