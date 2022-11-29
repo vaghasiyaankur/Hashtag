@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hashtag;
 
 class HashtagController extends Controller
 {
@@ -33,8 +34,35 @@ class HashtagController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $filename = null;
+        
+        if($request->hasfile('photo')) {
+            $file = $request->file('photo');
+            $filename = 'img_'.rand(100000,999999).".".$file->GetClientOriginalExtension();
+
+            // File extension
+            $extension = $file->getClientOriginalExtension();
+
+            // File upload location
+            $location = 'storage/Hashtag';
+
+            // Upload file
+            $file->move($location,$filename);
+            
+            // File path
+            $filepath = url('storage/Hashtag/'.$filename);
+        }
+
+
+        $amenity = new Hashtag();
+        $amenity->title = $request->title;
+        $amenity->hashtag = $request->tag;
+        $amenity->description = $request->description;
+        $amenity->Photos = $filename;
+        $amenity->save();
+
+        return response()->json(["success" => "Hashtag Inserted Successfully"], 200);
     }
 
     /**
