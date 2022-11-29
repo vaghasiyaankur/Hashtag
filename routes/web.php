@@ -25,4 +25,7 @@ Route::get('/view', function () {
     return view('View.index');
 });
 
+Route::post('add-hashtag', [HashtagController::class, 'store'])->name('add.hashtag');
+Route::get('/list-hashtag', [HashtagController::class, 'index'])->name('list.hashtag');
+
 
