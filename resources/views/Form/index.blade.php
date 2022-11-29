@@ -218,8 +218,8 @@
 
 
 
-                        $('<li class="addedTag">' + $(this).val() +
-                            '<span class="tagRemove" onclick="$(this).parent().remove();">x</span><input type="hidden" value="' +
+                        $('<li class="addedTag">#' + $(this).val() +
+                            '<span class="tagRemove" onclick="$(this).parent().remove();">x</span><input type="hidden" value="#' +
                             $(this).val() + '" name="tags[]"></li>').insertBefore('.tags .tagAdd');
                         $(this).val('');
 
@@ -267,7 +267,7 @@
                         $(".addForm").trigger("reset");
                         $('.showMessage').html("Hashtag Inserted Successfully.");
                         $('.showMessage').removeClass('d-none').removeClass('alert-danger').addClass('alert-success');
-
+                        $(".addedTag").remove();
                         setTimeout (function(){
                             $('.showMessage').addClass('d-none')
                         },5000);

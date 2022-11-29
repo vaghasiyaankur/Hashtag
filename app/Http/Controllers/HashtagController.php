@@ -12,9 +12,18 @@ class HashtagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $results = Hashtag::orderBy('id')->paginate(10);
+        $artilces = '';
+        if ($request->ajax()) {
+            foreach ($results as $result) {
+                $artilces.='<div class="card mb-2"> <div class="card-body">'.$result->id.' <h5 class="card-title">'.$result->title.'</h5> gfhjfkghfgkhjfglhkjfglhfjlhfjhljghfhfjhklgfjhljgfjhljkfljhkldfjhkdfjhldjhkdfgjhlgfhjkfjhlfgjhfklgjhfkdjhld</div></div>';
+                // $artilces.= view('View.List')->render();
+            }
+            return $artilces;
+        }
+        return view('View.index');
     }
 
     /**
@@ -36,7 +45,7 @@ class HashtagController extends Controller
     public function store(Request $request)
     {   
         $filename = null;
-        
+
         if($request->hasfile('photo')) {
             $file = $request->file('photo');
             $filename = 'img_'.rand(100000,999999).".".$file->GetClientOriginalExtension();
