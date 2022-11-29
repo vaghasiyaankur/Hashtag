@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Hashtag;
+use Storage;
 
 class HashtagController extends Controller
 {
@@ -39,6 +40,11 @@ class HashtagController extends Controller
                     if ($result->photos) {
                         $artilces.='<div class="photo-details-view">
                             <img src="'.$URL.'/storage/Hashtag/'.$result->photos.'" alt="">
+                            <div class="download-icon">
+                            <a href="'.$URL.'/image-download/'.$result->photos.'")">
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                            </a>
+                        </div>
                         </div>';
                     }
                         $artilces.='<div class="hashtag-details-view">
@@ -142,5 +148,13 @@ class HashtagController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function downloadImage($image)
+    {
+        // dd($image);
+        $imagePath = Storage::url('Hashtag/'.$image);
+
+        return response()->download(public_path($imagePath));
     }
 }

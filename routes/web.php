@@ -27,3 +27,4 @@ Route::post('add-hashtag', [HashtagController::class, 'store'])->name('add.hasht
 // Route::get('/list-hashtag', [HashtagController::class, 'index'])->name('list.hashtag');
 
 
+Route::get('image-download/{image}', [HashtagController::class, 'downloadImage'])->name('download.image');
