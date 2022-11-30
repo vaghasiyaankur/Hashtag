@@ -16,9 +16,21 @@ class HashtagController extends Controller
     public function index(Request $request)
     {
         $URL = $request->root();
-
         $search = $request->search;
-        $results = Hashtag::orderBy('id')->orWhere('title','LIKE','%'.$search.'%')->orWhere('description','LIKE','%'.$search.'%')->paginate(5);
+        $ids = [];
+        if($search){
+            $hashtags = Hashtag::select('id', 'hashtag')->get();
+            foreach($hashtags as $hashtag){
+                $array = explode(',', $hashtag->hashtag);
+                if(in_array($search, $array)) array_push($ids, $hashtag->id);
+            }
+        }
+        
+        $results = Hashtag::orderBy('id');
+        if($search){
+            $results = $results->whereIn('id', $ids)->orWhere('title','LIKE','%'.$search.'%')->orWhere('description','LIKE','%'.$search.'%');
+        }
+        $results = $results->paginate(5);
         $artilces = '';
         if ($request->ajax()) {
                 foreach ($results as $result) {
