@@ -201,5 +201,15 @@
         // $('.hastag-details-box').remove();
         infinteLoadMore(page = 1, 'search');
     }); 
+
+    // home page search hashtag
+    let propertyTypeData = new URLSearchParams(window.location.search);
+    
+    if(propertyTypeData && propertyTypeData.has('search')){
+        var hashtagName = propertyTypeData.get('search');
+        $('.searchInput').val(hashtagName);
+        page = 1;
+        infinteLoadMore(page = 1, 'search');
+    }
 </script>
 @endpush
