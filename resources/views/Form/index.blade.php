@@ -222,17 +222,12 @@
                 if (event.which == '13') {
                     if (($(this).val() != '') && ($(".tags .addedTag:contains('" + $(this).val() + "') ")
                             .length == 0)) {
-
-
-
                         $('<li class="addedTag">#' + $(this).val() +
                             '<span class="tagRemove" onclick="$(this).parent().remove();">x</span><input type="hidden" value="' +
                             $(this).val() + '" name="tags[]"></li>').insertBefore('.tags .tagAdd');
                         $(this).val('');
-
                     } else {
                         $(this).val('');
-
                     }
                 }
             });
@@ -277,6 +272,7 @@
                         $(".addedTag").remove();
                         setTimeout (function(){
                             $('.showMessage').addClass('d-none')
+                            // window.location = baseUrl + "/view"; 
                         },5000);
                     },
                     error: function(response) {

@@ -48,7 +48,11 @@ class HashtagController extends Controller
                         </div>';
                     }
                         $artilces.='<div class="hashtag-details-view">
-                            <h5 class="hashtag-text">'.$result->hashtag.'</h5>
+                            <h5 class="hashtag-text">';
+                            foreach(explode(',', $result->hashtag) as $hash) { 
+                                $artilces.='#'.$hash.' ';
+                            }
+                        $artilces.='</h5>
                         </div>
                     </div>';
                 }
