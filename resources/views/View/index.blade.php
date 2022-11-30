@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hashtag-view-section-main">
+            <div class="hashtag-view-section-main px-0">
                 
                 {{-- <div class="col-12 hastag-details-box">
                     <div class="details-date-view mb-3">

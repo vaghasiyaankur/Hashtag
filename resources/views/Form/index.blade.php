@@ -24,24 +24,29 @@
         .hashtag-form-section .form-title h5 {
             font-size: 21px;
         }
-        .hashtag-form-section .form-input-box .fieldlabels{
+
+        .hashtag-form-section .form-input-box .fieldlabels {
             margin-bottom: 8px;
             font-size: 16px;
             font-weight: 500;
         }
-        .hashtag-form-section .form-input-box input{
+
+        .hashtag-form-section .form-input-box input {
             outline: none;
         }
-        .hashtag-form-section .form-control:focus{
+
+        .hashtag-form-section .form-control:focus {
             outline: none;
         }
 
         .form-control:focus {
             outline: none;
         }
+
         .hashtag-form-section .form-details .form-title {
             min-height: 76px;
         }
+
         /* hashtag-add-field */
         .hashtag-form-section .tags {
             background: none repeat scroll 0 0 #fff;
@@ -107,10 +112,17 @@
             color: #6b6b6b;
             font-size: 1.5em;
         }
+
         .hashtag-form-section button.btn.btn-secondary.submitForm {
             width: 100%;
             max-width: 135px;
             margin: 0 auto;
+        }
+        .hashtag-form-section .button-with-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
         }
     </style>
 @endpush
@@ -119,10 +131,15 @@
     <section class="hashtag-form-section ">
         <div class="form-details">
             <div class="form-title">
-                <h5>Add Form</h5>
+               <div class="button-with-title">
+                <div class="title"><h5>Add Form</h5></div>
+                <div class="view-list-btn">
+                    <a href="{{ route('list.hashtag') }}" class="btn btn-secondary">View List</a>
+                </div>
+               </div>
                 <div class="alert alert-dismissible fade show m-0 py-2 mb-1 d-none showMessage" role="alert">
                     <span id="tags-error"></span>
-                  </div>
+                </div>
             </div>
             <form action="" class="addForm">
                 <div class="form-input-box">
@@ -157,7 +174,8 @@
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label fieldlabels">description :</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fieldlabels">description
+                                    :</label>
                                 <textarea class="form-control form_description" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         </div>
@@ -166,7 +184,7 @@
                                 <label for="exampleFormControlTextarea1" class="form-label fieldlabels">Photo :</label>
                                 <div class="input-group">
                                     <input type="file" class="form-control form_photo" id="inputGroupFile04"
-                                       name="file">
+                                        name="file">
                                 </div>
                             </div>
                         </div>
@@ -243,10 +261,11 @@
 
                 if (tag.length === 0) {
                     $('.showMessage').html("The tags field is required.");
-                    $('.showMessage').removeClass('d-none').removeClass('alert-success').addClass('alert-danger');
-                    setTimeout (function(){
+                    $('.showMessage').removeClass('d-none').removeClass('alert-success').addClass(
+                        'alert-danger');
+                    setTimeout(function() {
                         $('.showMessage').addClass('d-none')
-                    },5000);
+                    }, 5000);
                     return;
                 } else {
                     $(`.showMessage`).html(``);
@@ -268,15 +287,15 @@
                     success: function(response) {
                         $(".addForm").trigger("reset");
                         $('.showMessage').html("Hashtag Inserted Successfully.");
-                        $('.showMessage').removeClass('d-none').removeClass('alert-danger').addClass('alert-success');
+                        $('.showMessage').removeClass('d-none').removeClass('alert-danger')
+                            .addClass('alert-success');
                         $(".addedTag").remove();
-                        setTimeout (function(){
+                        setTimeout(function() {
                             $('.showMessage').addClass('d-none')
                             // window.location = baseUrl + "/view"; 
-                        },5000);
+                        }, 5000);
                     },
-                    error: function(response) {
-                    }
+                    error: function(response) {}
                 });
             });
         });
