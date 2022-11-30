@@ -26,7 +26,7 @@ class HashtagController extends Controller
             }
         }
         
-        $results = Hashtag::orderBy('id');
+        $results = Hashtag::orderBy('id', 'DESC');
         if($search){
             $results = $results->whereIn('id', $ids)->orWhere('title','LIKE','%'.$search.'%')->orWhere('description','LIKE','%'.$search.'%');
         }
@@ -168,9 +168,30 @@ class HashtagController extends Controller
 
     public function downloadImage($image)
     {
-        // dd($image);
         $imagePath = Storage::url('Hashtag/'.$image);
 
         return response()->download(public_path($imagePath));
+    }
+
+    public function hashtagList()
+    {
+        $ids = [];
+        $hashtags = Hashtag::select('id', 'hashtag')->get();
+        foreach($hashtags as $hashtag){
+            $array = explode(',', $hashtag->hashtag);
+            array_push($ids, $array);
+        }
+            
+        $results = [];
+        foreach ($ids as $key => $value) { 
+            if (is_array($value)) { 
+                $results = array_unique(array_merge($results, $value));
+            } 
+            else { 
+                $results[$key] = $value; 
+            } 
+        } 
+            
+        return view('Home.index', compact('results'));
     }
 }

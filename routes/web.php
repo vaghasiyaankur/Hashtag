@@ -13,10 +13,7 @@ use App\Http\Controllers\HashtagController;
 |
 */
 
-Route::get('/', function () {
-    return view('Home.index');
-});
-
+Route::get('/',  [HashtagController::class, 'hashtagList'])->name('home.index');
 Route::get('/form', function () {
     return view('Form.index');
 })->name('show.form');

@@ -68,15 +68,11 @@
             </div>
         </div>
         <div class="col-12 px-0">
-            <a href="javascript:;" class="hashtag-tab">
-                <p class="list-of-hastag">List of Hashtag</p>
-            </a>
-            <a href="javascript:;" class="hashtag-tab">
-                <p class="list-of-hastag">List of Hashtag</p>
-            </a>
-            <a href="javascript:;" class="hashtag-tab">
-                <p class="list-of-hastag">#Wonderfull</p>
-            </a>
+            @foreach ($results as $result)     
+                <a href="{{url('/view?page=1&search='.$result)}}" class="hashtag-tab">
+                    <p class="list-of-hastag">#{{$result}}</p>
+                </a>
+            @endforeach
         </div>
     </div>
 </section>
