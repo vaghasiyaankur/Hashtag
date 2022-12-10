@@ -71,7 +71,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
+        }        
         .hashtag-view-section .hashtag-details-view {
             margin: 0 auto;
             text-align: center;

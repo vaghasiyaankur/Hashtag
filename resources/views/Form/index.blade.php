@@ -78,7 +78,7 @@
 
         .hashtag-form-section .tags input,
         .hashtag-form-section li.addedTag {
-            border: 1px solid lightgray;
+            border: none;
             border-radius: 2px;
             box-shadow: none;
             display: block;
@@ -87,8 +87,7 @@
         }
 
         .hashtag-form-section .tags input:hover {
-            border: 1px solid #c9c9c9;
-            border-right: none;
+            border: none;
         }
 
         .hashtag-form-section span.tagRemove {
@@ -137,9 +136,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #6c757d;
-            border: 1px solid lightgrey;
+            color: #6c757d;            
             border-left: none;
+        }
+        .hashtag-form-section li.tagAdd.taglist {
+            border: 1px solid lightgrey;
         }
     </style>
 @endpush
