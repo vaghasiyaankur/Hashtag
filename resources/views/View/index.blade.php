@@ -48,6 +48,8 @@
         .hashtag-view-section .photo-details-view img {
             width: 100%;
             height: 100%;
+            max-width: 80px;
+            max-height: 80px;
             object-fit: cover;
         }
         .hashtag-view-section .download-icon i{

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Hashtag;
+use Illuminate\Support\Facades\File;
 
 class hashtagSeeder extends Seeder
 {
@@ -27,6 +28,8 @@ class hashtagSeeder extends Seeder
             ['loafer shoes', 'TommyHilfiger,Reebok', 'user comments, advanced settings and contact messages with its powerful Admin panel. Also it has a useful ad management system.', null],
             ['Sweatshirt Hoodie', 'Reebok,TommyHilfiger', 'ou can manage your ad spaces with this system. It is secured, seo optimized, fast and easy to use.', null],
         ];
+
+        File::copy(public_path('img/dummyimg.jpg'), public_path('storage/Hashtag/img_1.jpg'));
 
         foreach ($hashtags as  list($title, $hash_tag, $description, $image)) {
             Hashtag::create([

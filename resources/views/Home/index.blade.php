@@ -58,12 +58,12 @@
     <div class="row">
         <div class="col-12 add-fine-button">
             <div class="add-hastag">
-                <button type="button" class="btn btn-secondary">Add</button>
+                <a href="{{ route('show.form') }}" class="btn btn-secondary">Add</a>
             </div>
             <div class="find-hastag ms-1 ">
                 <div class="form-group has-search">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control" placeholder="Search">
+                    {{-- <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control" placeholder="Search"> --}}
                 </div>
             </div>
         </div>

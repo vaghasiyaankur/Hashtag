@@ -83,10 +83,12 @@
             box-shadow: none;
             display: block;
             padding: 4px;
+            border-right: none;
         }
 
         .hashtag-form-section .tags input:hover {
             border: 1px solid #c9c9c9;
+            border-right: none;
         }
 
         .hashtag-form-section span.tagRemove {
@@ -124,6 +126,21 @@
             align-items: center;
             margin-bottom: 5px;
         }
+        .hashtag-form-section a.add_hashtag {
+            text-decoration: none;
+            font-size: 23px;
+            line-height: 0;
+            width: 100%;
+            min-width: 25px;
+            height: 100%;
+            min-height: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6c757d;
+            border: 1px solid lightgrey;
+            border-left: none;
+        }
     </style>
 @endpush
 
@@ -159,8 +176,9 @@
                                     <li class="addedTag">SEO<span onclick="$(this).parent().remove();"
                                             class="tagRemove">x</span><input type="hidden" name="tags[]" value="SEO">
                                     </li> --}}
-                                    <li class="tagAdd taglist">
+                                    <li class="tagAdd taglist d-flex align-items-center">
                                         <input type="text" id="search-field" required>
+                                        <a href="javascript:;" class="add_hashtag">+</a>
                                     </li>
                                 </ul>
                             </div>
@@ -249,6 +267,19 @@
                     }
                 }
             });
+
+            $('.add_hashtag').click(function() {
+                    if (($('#search-field').val() != '') && ($(".tags .addedTag:contains('" + $('#search-field').val() + "') ")
+                            .length == 0)) {
+                        $('<li class="addedTag">#' + $('#search-field').val() +
+                            '<span class="tagRemove" onclick="$(this).parent().remove();">x</span><input type="hidden" value="' +
+                            $('#search-field').val() + '" name="tags[]"></li>').insertBefore('.tags .tagAdd');
+                        $('#search-field').val('');
+                    } else {
+                        $('#search-field').val('');
+                    }
+            });
+
 
             // Add Hashtag Detail
             $(document).on('click', '.submitForm', function() {
