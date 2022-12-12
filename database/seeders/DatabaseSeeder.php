@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\hashtagSeeder;
-
+use Database\Seeders\UserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            hashtagSeeder::class
+            hashtagSeeder::class,
+            UserSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 

@@ -14,9 +14,7 @@ use App\Http\Controllers\HashtagController;
 */
 
 Route::get('/',  [HashtagController::class, 'hashtagList'])->name('home.index');
-Route::get('/form', function () {
-    return view('Form.index');
-})->name('show.form');
+Route::get('/form', [HashtagController::class, 'form'])->name('show.form');
 
 Route::get('/view', [HashtagController::class, 'index'])->name('list.hashtag');
 
@@ -25,3 +23,7 @@ Route::post('add-hashtag', [HashtagController::class, 'store'])->name('add.hasht
 
 
 Route::get('image-download/{image}', [HashtagController::class, 'downloadImage'])->name('download.image');
+
+// login
+Route::get('login', [HashtagController::class, 'loginView'])->name('login.view');
+Route::post('login', [HashtagController::class, 'login'])->name('login');
