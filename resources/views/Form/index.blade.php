@@ -131,6 +131,7 @@
             line-height: 0;
             width: 100%;
             min-width: 25px;
+            max-width: 25px;
             height: 100%;
             min-height: 34px;
             display: flex;
@@ -178,7 +179,7 @@
                                             class="tagRemove">x</span><input type="hidden" name="tags[]" value="SEO">
                                     </li> --}}
                                     <li class="tagAdd taglist d-flex align-items-center">
-                                        <input type="text" id="search-field" required>
+                                        <input class="w-100" type="text" id="search-field" required>
                                         <a href="javascript:;" class="add_hashtag">+</a>
                                     </li>
                                 </ul>
