@@ -29,6 +29,10 @@ class hashtagSeeder extends Seeder
             ['Sweatshirt Hoodie', 'Reebok,TommyHilfiger', 'ou can manage your ad spaces with this system. It is secured, seo optimized, fast and easy to use.', null],
         ];
 
+        $check_folder= is_dir(public_path('storage/Hashtag'));
+        if(!$check_folder) mkdir(public_path('storage/Hashtag'));
+
+
         File::copy(public_path('img/dummyimg.jpg'), public_path('storage/Hashtag/img_1.jpg'));
 
         foreach ($hashtags as  list($title, $hash_tag, $description, $image)) {
